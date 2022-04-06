@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+
 import {
   MdFastfood,
   MdCloudUpload,
@@ -16,6 +17,9 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { storage } from "../firebase.config";
+import { getAllFoodItems, saveItem } from "../utils/firebaseFunctions";
+import { useStateValue } from "../context/StateProvider";
+import { actionType } from "../context/reducer";
 
 const CreateContainer = () => {
   const [title, setTitle] = useState("");
@@ -27,6 +31,9 @@ const CreateContainer = () => {
   const [alertStatus, setAlertStatus] = useState("danger");
   const [msg, setMsg] = useState(null);
   const [isLoadiing, setIsLoadiing] = useState(false);
+
+  const [{}, dispatch] = useStateValue();
+
 
   const uplouadImage = (e) => {
     setIsLoadiing(true);
@@ -70,7 +77,7 @@ const CreateContainer = () => {
     const deleteRef = ref(storage, imageAsset);
     deleteObject(deleteRef).then(() => {
       setImageAsset(null);
-      setIsLoadiing(false)
+      setIsLoadiing(false);
       setFields(true);
       setMsg("Image Deleted successfully");
       setAlertStatus("success");
@@ -80,7 +87,69 @@ const CreateContainer = () => {
     });
   };
 
-  const saveDetails = () => {};
+  const saveDetails = () => {
+    setIsLoadiing(true);
+    try {
+      if (!title || !calories || !price || !category) {
+        setFields(true);
+        setMsg("Required fields cant be empty");
+        setAlertStatus("danger");
+        setTimeout(() => {
+          setFields(false);
+          setIsLoadiing(false);
+        }, 4000);
+      } else {
+        const data = {
+          id: `${Date.now()}`,
+          title: title,
+          imageURL: imageAsset,
+          category: category,
+          calories: calories,
+          qty: 1,
+          price: price,
+        };
+        saveItem(data);
+        setIsLoadiing(false);
+        setFields(true);
+        setMsg("Data Uploaded successfully");
+        clearData();
+        setAlertStatus("success");
+        setTimeout(() => {
+          setFields(false);
+        }, 4000);
+      }
+    } catch (error) {
+      console.log(error);
+      setFields(true);
+      setMsg("Error while uploading : try Again");
+      setAlertStatus("danger");
+      setTimeout(() => {
+        setFields(false);
+        setIsLoadiing(false);
+      }, 4000);
+    }
+
+    fetchData()
+
+  };
+
+  const clearData = () => {
+    setTitle("");
+    setImageAsset(null);
+    setCalories("");
+    setPrice("");
+    setCalories("Select Category");
+  };
+
+  
+  const fetchData = async () =>{
+    await getAllFoodItems().then(data =>{
+      dispatch({
+        type: actionType.SET_FOOD_ITEMS,
+        foodItems : data
+      })
+    })
+  }
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center">
