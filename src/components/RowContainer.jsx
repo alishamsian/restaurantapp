@@ -1,12 +1,31 @@
 import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MdShoppingBasket } from "react-icons/md";
-
+import { actionType } from "../context/reducer";
+import { useStateValue } from "../context/StateProvider";
+import NotFound from "../img/NotFound.svg";
 const RowContainer = (props) => {
   const rowContainer = useRef();
-    useEffect(() => {
-      rowContainer.current.scrollLeft += props.scrollValue;
-    }, [props.scrollValue]);
+  const [items, setItems] = useState([])
+  const [{cartItems } , dispatch] = useStateValue()
+  
+    const addtocart =(item)=>{
+      
+      dispatch({
+        type : actionType.SET_CARTITEMS ,
+        cartItems : items
+      })
+      localStorage.setItem('cartItems', JSON.stringify(items))
+    }
+
+  useEffect(() => {
+    rowContainer.current.scrollLeft += props.scrollValue;
+  }, [props.scrollValue]);
+ 
+  useEffect(() => {
+    addtocart()
+  }, [items]);
+
 
   return (
     <div
@@ -15,26 +34,29 @@ const RowContainer = (props) => {
     ${
       props.flag
         ? "overflow-x-scroll scrollbar-none"
-        : "flex-wrap overflow-x-hidden"
+        : "flex-wrap overflow-x-hidden justify-center"
     }
     `}
     >
-      {props.data &&
+      {props.data && props.data.length > 0 ? (
         props.data.map((item) => (
           <div
             key={item?.id}
             className="w-full min-w-[300px] md:w-340 md:min-w-[340px] h-[225px] bg-cardOverlay rounded-lg p-2 my-12 backdrop-blur-lg hover:drop-shadow-lg flex flex-col items-center justify-between"
           >
             <div className="w-full flex items-center justify-between">
-              <motion.img
-                whileHover={{ scale: 1.2 }}
-                src={item?.imageURL}
-                alt=""
-                className="w-40 -mt-8 drop-shadow-2xl "
-              />
+              <motion.div className="w-40 h-40 -mt-8 drop-shadow-2xl ">
+                <img
+                  whileHover={{ scale: 1.2 }}
+                  src={item?.imageURL}
+                  alt=""
+                  className="w-full h-full object-contain"
+                />
+              </motion.div>
               <motion.div
                 whileTap={{ scale: 0.75 }}
                 className="w-8 h-8 rounded-full bg-red-600 flex justify-center items-center"
+                onClick={()=>setItems([...cartItems , item])}
               >
                 <MdShoppingBasket className="text-white" />
               </motion.div>
@@ -53,7 +75,13 @@ const RowContainer = (props) => {
               </div>
             </div>
           </div>
-        ))}
+        ))
+      ) : (
+        <div className="w-full flex flex-col items-center justify-center">
+          <img src={NotFound} className="h-340" alt="" />
+          <p className="text-xl text-headingColor font-semibold my-2">Items Not Available</p>
+        </div>
+      )}
     </div>
   );
 };
