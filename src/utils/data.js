@@ -6,29 +6,29 @@ import Fi1 from "../img/fi1.png";
 export const heroData = [
   {
     id: 1,
-    name: "Icecream",
-    decp: "Chocolate & Vanilla",
+    name: "بستنی",
+    decp: "شکلات و وانیل",
     price: "5.25",
     imageSrc: I1,
   },
   {
     id: 2,
-    name: "Strawberries",
-    decp: "Fresh Strawberries",
+    name: "توت فرنگی",
+    decp: "توت فرنگی تازه",
     price: "10.25",
     imageSrc: F1,
   },
   {
     id: 3,
-    name: "Chicken Kabab",
-    decp: "Mixed Kebab Plate",
+    name: "کباب مرغ",
+    decp: "بشقاب کباب مخلوط",
     price: "8.25",
     imageSrc: C3,
   },
   {
     id: 4,
-    name: "Fish Kabab",
-    decp: "Mixed Fish Kebab",
+    name: "ماهی کباب",
+    decp: "بشقاب ماهی مخلوط",
     price: "5.25",
     imageSrc: Fi1,
   },
@@ -38,37 +38,37 @@ export const heroData = [
 export const categories = [
     {
         id: 1,
-        name: "Chicken",
+        name: "مرغ",
         urlParamName: "chicken",
     },
     {
         id: 2,
-        name: "Curry",
+        name: "ادویه",
         urlParamName: "curry",
     },
     {
         id: 3,
-        name: "Rice",
+        name: "برنج",
         urlParamName: "rice",
     },
     {
         id: 4,
-        name: "Fish",
+        name: "ماهی",
         urlParamName: "fish",
     },
     {
         id: 5,
-        name: "Fruits",
+        name: "میوه",
         urlParamName: "fruits",
     },
     {
         id: 6,
-        name: "Icecreams",
+        name: "بستنی",
         urlParamName: "icecreams",
     },
     {
         id: 7,
-        name: "Soft Drinks",
+        name: "نوشیدنی",
         urlParamName: "drinks",
     },
 ]

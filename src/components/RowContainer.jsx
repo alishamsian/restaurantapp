@@ -30,7 +30,7 @@ const RowContainer = (props) => {
   return (
     <div
       ref={rowContainer}
-      className={`w-full my-12 flex items-center gap-3 scroll-smooth
+      className={`w-full my-12 flex items-center md:justify-center gap-3 scroll-smooth
     ${
       props.flag
         ? "overflow-x-scroll scrollbar-none"
@@ -66,11 +66,11 @@ const RowContainer = (props) => {
                 {item?.title}
               </p>
               <p className="mt-1 text-sm text-gray-500">
-                {item?.calories} Calories
+                {item?.calories} کالری
               </p>
               <div className="flex items-center gap-8 ">
                 <p className="text-lg text-headingColor font-semibold">
-                  <span className="text-sm text-red-500">$</span> {item.price}
+                {item.price} <span className="text-sm text-red-500">ريال</span> 
                 </p>
               </div>
             </div>

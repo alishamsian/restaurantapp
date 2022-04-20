@@ -176,7 +176,7 @@ const CreateContainer = () => {
             required
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Give me a title..."
+            placeholder="عنوان کالا ..."
             className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor"
           />
         </div>
@@ -186,7 +186,7 @@ const CreateContainer = () => {
             className="outline-none w-full text-base border-b-2 border-gray-200 p-2 rounded-md cursor-pointer"
           >
             <option value="other" className="bg-white">
-              Select Category
+              انتخاب دسته بندی
             </option>
             {categories.map((item) => (
               <option
@@ -210,7 +210,7 @@ const CreateContainer = () => {
                     <div className="w-full h-full flex flex-col items-center justify-center gap-2">
                       <MdCloudUpload className="text-gray-500 text-3xl hover:text-gray-700" />
                       <p className="text-gray-500 hover:text-gray-700">
-                        Click here to upload
+                      برای بارگذاری کلیک کنید
                       </p>
                     </div>
                     <input
@@ -251,7 +251,7 @@ const CreateContainer = () => {
               required
               value={calories}
               onChange={(e) => setCalories(e.target.value)}
-              placeholder="Calories"
+              placeholder="کالری"
               className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor"
             />
           </div>
@@ -264,7 +264,7 @@ const CreateContainer = () => {
                 required
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
-                placeholder="Price"
+                placeholder="قیمت"
                 className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor"
               />
             </div>
@@ -276,7 +276,7 @@ const CreateContainer = () => {
             className="ml-0 md:m-auto w-full md:w-auto border-none outline-none bg-emerald-500 px-12 py-2 rounded-lg text-lg text-white font-semibold "
             onClick={saveDetails}
           >
-            Save
+            ذخیره کن
           </button>
         </div>
       </div>
