@@ -97,7 +97,9 @@ const Header = () => {
             <MdShoppingBasket className="text-textColor text-2xl cursor-pointer" />
             {cartItems && cartItems.length > 0 && (
               <div className="absolute -top-2 -right-2 bg-cartNumBg rounded-full w-5 h-5 flex items-center justify-center">
-                <p className="text-xs text-white font-semibold">{cartItems.length}</p>
+                <p className="text-xs text-white font-semibold">
+                  {cartItems.length}
+                </p>
               </div>
             )}
           </div>
@@ -119,7 +121,7 @@ const Header = () => {
                 {user && user.email === "alishamsian504@gmail.com" && (
                   <Link to="/createItem">
                     <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-out text-textColor text-base ">
-                    <MdAdd />  افزودن کالا 
+                    <MdAdd /> افزودن کالا
                     </p>
                   </Link>
                 )}
@@ -127,7 +129,7 @@ const Header = () => {
                   className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-out text-textColor text-base "
                   onClick={logout}
                 >
-                 <MdLogout />  خروج از حساب 
+                  <MdLogout /> خروج از حساب
                 </p>
               </motion.div>
             )}
@@ -142,10 +144,12 @@ const Header = () => {
             onClick={showCart}
           />
           {cartItems && cartItems.length > 0 && (
-              <div className="absolute -top-2 -right-2 bg-cartNumBg rounded-full w-5 h-5 flex items-center justify-center">
-                <p className="text-xs text-white font-semibold">{cartItems.length}</p>
-              </div>
-            )}
+            <div className="absolute -top-2 -right-2 bg-cartNumBg rounded-full w-5 h-5 flex items-center justify-center">
+              <p className="text-xs text-white font-semibold">
+                {cartItems.length}
+              </p>
+            </div>
+          )}
         </div>
         <Link to="/" className="flex items-center gap-2">
           <img src={Logo} className="w-8 object-cover" alt="logo " />
