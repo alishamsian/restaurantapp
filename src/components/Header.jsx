@@ -180,16 +180,16 @@ const Header = () => {
 
               <ul className="flex flex-col">
                 <li className="text-base text-textColor hover:bg-slate-100 duration-100 transition-all ease-in-out cursor-pointer  px-4 py-2">
-                  Home
+                  خانه
                 </li>
                 <li className="text-base text-textColor hover:bg-slate-100 duration-100 transition-all ease-in-out cursor-pointer  px-4 py-2">
-                  Menu
+                  محصولات
                 </li>
                 <li className="text-base text-textColor hover:bg-slate-100 duration-100 transition-all ease-in-out cursor-pointer  px-4 py-2">
-                  About Us
+                  درباره ما
                 </li>
                 <li className="text-base text-textColor hover:bg-slate-100 duration-100 transition-all ease-in-out cursor-pointer  px-4 py-2">
-                  Services
+                  خدمات
                 </li>
               </ul>
 

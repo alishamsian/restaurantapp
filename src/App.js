@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { Header, MainContainer, CreateContainer } from "./components";
+import Footer from "./components/Footer";
 import { actionType } from "./context/reducer";
 import { useStateValue } from "./context/StateProvider";
 import { getAllFoodItems } from "./utils/firebaseFunctions";
@@ -34,6 +35,8 @@ const App = () => {
             <Route path="/createItem" element={<CreateContainer />} />
           </Routes>
         </main>
+
+        <Footer />
       </div>
     </AnimatePresence>
   );
