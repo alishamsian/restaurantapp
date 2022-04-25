@@ -1,1 +1,1 @@
-![My Image](./src/img/avatar.png)
+![My Image](./src/img/demo.png)
